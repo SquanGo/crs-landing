@@ -93,19 +93,24 @@ nav {
     font-size: 14px;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-links .nav-link-button {
     transition: color .2s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links .nav-link-button:hover {
     color: var(--text);
 }
 
-.nav-download {
-    padding: 9px 15px;
-    background: var(--text);
-    color: white;
-    border-radius: 8px;
+.nav-link-button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
 }
 
 /* HERO */
@@ -270,7 +275,7 @@ nav {
     display: grid;
     place-items: center;
     border-radius: 11px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .feature-icon svg {
@@ -301,8 +306,8 @@ nav {
 
 .feature-desc {
     color: var(--muted);
-    font-style: italic;
     font-size: 15px;
+    line-height: 1.6;
 }
 
 @media (max-width: 720px) {
@@ -485,4 +490,97 @@ nav {
         flex-direction: column;
         gap: 15px;
     }
+}
+
+/* CONTACT MODAL */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(23, 23, 23, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease;
+    z-index: 100;
+    padding: 20px;
+}
+
+.modal-overlay.modal-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    max-width: 480px;
+    width: 100%;
+    padding: 36px;
+    box-shadow: 0 30px 60px -20px rgba(23, 23, 23, 0.25);
+    transform: translateY(10px);
+    transition: transform .2s ease;
+}
+
+.modal-overlay.modal-visible .modal {
+    transform: translateY(0);
+}
+
+.modal h2 {
+    font-size: 28px;
+    letter-spacing: -.5px;
+    margin-bottom: 18px;
+}
+
+.modal-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin-bottom: 22px;
+}
+
+.modal p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.modal p:last-child {
+    margin-bottom: 0;
+}
+
+.modal p strong {
+    color: var(--text);
+}
+
+.modal-link {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--soft);
+    border: none;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background .2s ease, color .2s ease;
+}
+
+.modal-close:hover {
+    background: var(--border);
+    color: var(--text);
 }

@@ -17,9 +17,9 @@
           Croissant
         </a>
         <div class="nav-links">
-          <a href="mailto:hello@example.com" class="nav-download">
+          <button type="button" class="nav-link-button" id="contact-trigger">
             Contact
-          </a>
+          </button>
         </div>
       </nav>
     </header>
@@ -35,10 +35,10 @@
           </p>
           <div class="hero-actions">
             <a href="#download" class="button button-primary">
-              Get Croissant
+              Download Croissant
             </a>
             <a href="https://example.com" class="button button-secondary">
-              Open on the web →
+              Open in browswer →
             </a>
           </div>
         </div>
@@ -48,14 +48,13 @@
       </section>
 
     <div class="statement">
-      Quietly useful. Available where you need it.
+
     </div>
   </div>
 
   <div class="screen screen-features">
     <div class="container">
-      <p class="features-eyebrow reveal">WHAT'S INSIDE</p>
-      <h2 class="features-heading reveal">Three things worth knowing</h2>
+      <h2 class="features-heading reveal">Features</h2>
       <div class="feature-grid">
         <div class="feature-card reveal">
           <div class="feature-icon feature-icon-blue">
@@ -68,7 +67,7 @@
             </svg>
           </div>
           <h3>Brand new settings</h3>
-          <p class="feature-desc">Description coming soon.</p>
+          <p class="feature-desc">Generate algs from a specific angle, take advantage of symmetries, and more!</p>
         </div>
 
         <div class="feature-card reveal">
@@ -81,7 +80,7 @@
             </svg>
           </div>
           <h3>Cross-platform UI</h3>
-          <p class="feature-desc">Description coming soon.</p>
+          <p class="feature-desc">The first integrated squan solver, built like an app you can interact with.</p>
         </div>
 
         <div class="feature-card reveal">
@@ -97,7 +96,7 @@
             </svg>
           </div>
           <h3>Ranked by ergonomics</h3>
-          <p class="feature-desc">Description coming soon.</p>
+          <p class="feature-desc">The solver calculates the approximate ergonomics of each alg, and ranks algs based on that benchmark.</p>
         </div>
       </div>
     </div>
@@ -107,12 +106,8 @@
     <section class="downloads">
       <div class="container">
         <div class="section-heading reveal">
-          <h2>
-            Get it.
-          </h2>
-          <p>
-            Choose your platform.
-          </p>
+          <h2>Download</h2>
+          <p>choose your platform</p>
         </div>
 
         <div class="platform-grid">
@@ -296,8 +291,33 @@
   </div>
   </main>
 
+  <div class="modal-overlay" id="contact-modal">
+    <div class="modal">
+      <button type="button" class="modal-close" id="contact-close" aria-label="Close">×</button>
+      <h2>Submit Feedback</h2>
+      <hr class="modal-divider">
+      <p>
+        Email us anytime at: <strong>squango.support@gmail.com</strong>
+      </p>
+      <p>
+        Alternatively, say something in the <a href="https://discord.gg/eu2rqzAREh" class="modal-link">squan discord server</a>.
+      </p>
+    </div>
+  </div>
+
   <script src="svgs.js"></script>
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('svg-linux').innerHTML = SVGS.linux;
+      document.getElementById('svg-windows').innerHTML = SVGS.windows;
+      document.getElementById('svg-android').innerHTML = SVGS.android;
+      document.getElementById('svg-web').innerHTML = SVGS.web;
+
+      highlightDetectedPlatform();
+      setupRevealAnimations();
+      setupContactModal();
+    });
+
     function detectPlatform() {
       const ua = navigator.userAgent || '';
       if (/android/i.test(ua)) return 'android';
@@ -329,6 +349,29 @@
       }, { threshold: 0.2 });
 
       revealEls.forEach((el) => observer.observe(el));
+    }
+
+    function setupContactModal() {
+      const trigger = document.getElementById('contact-trigger');
+      const overlay = document.getElementById('contact-modal');
+      const closeBtn = document.getElementById('contact-close');
+
+      function openModal() {
+        overlay.classList.add('modal-visible');
+      }
+
+      function closeModal() {
+        overlay.classList.remove('modal-visible');
+      }
+
+      trigger.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
     }
   </script>
 </body>
