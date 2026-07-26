@@ -73,9 +73,41 @@ nav {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.squango {
+    font-family: inherit;
+    font-size: 1.3rem;
     font-weight: 700;
-    font-size: 19px;
-    letter-spacing: -0.4px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    flex-shrink: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.18s ease;
+    user-select: none;
+}
+
+.squango:hover {
+    opacity: 0.75;
+}
+
+.squango-sq {
+    color: #1e3a8a;
+}
+
+.squango-go {
+    color: #0891b2;
+}
+
+.nav-divider {
+    width: 1px;
+    height: 1.2rem;
+    background: rgba(0, 0, 0, 0.18);
+    flex-shrink: 0;
+    border-radius: 1px;
+    align-self: center;
 }
 
 .brand-mark {
