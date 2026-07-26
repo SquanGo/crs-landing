@@ -56,4 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('svg-windows').innerHTML = SVGS.windows;
   document.getElementById('svg-android').innerHTML = SVGS.android;
   document.getElementById('svg-web').innerHTML = SVGS.web;
+
+  highlightDetectedPlatform();
 });
