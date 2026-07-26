@@ -58,4 +58,5 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('svg-web').innerHTML = SVGS.web;
 
   highlightDetectedPlatform();
+  setupRevealAnimations();
 });

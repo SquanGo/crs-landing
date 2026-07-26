@@ -17,10 +17,8 @@
           Croissant
         </a>
         <div class="nav-links">
-          <a href="#download">Download</a>
-          <a href="https://example.com">Web</a>
-          <a href="#download" class="nav-download">
-            Get Croissant
+          <a href="mailto:hello@example.com" class="nav-download">
+            Contact
           </a>
         </div>
       </nav>
@@ -28,7 +26,7 @@
 
     <main>
       <section class="hero container">
-        <div class="hero-content">
+        <div class="hero-content reveal">
           <h1>
             Croissant.
           </h1>
@@ -44,6 +42,9 @@
             </a>
           </div>
         </div>
+        <div class="hero-visual reveal">
+          <img src="./img/demo.png" alt="Croissant app screenshot">
+        </div>
       </section>
 
     <div class="statement">
@@ -53,10 +54,10 @@
 
   <div class="screen screen-features">
     <div class="container">
-      <p class="features-eyebrow">WHAT'S INSIDE</p>
-      <h2 class="features-heading">Three things worth knowing</h2>
+      <p class="features-eyebrow reveal">WHAT'S INSIDE</p>
+      <h2 class="features-heading reveal">Three things worth knowing</h2>
       <div class="feature-grid">
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="feature-icon feature-icon-blue">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round">
@@ -70,7 +71,7 @@
           <p class="feature-desc">Description coming soon.</p>
         </div>
 
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="feature-icon feature-icon-pink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round">
@@ -83,7 +84,7 @@
           <p class="feature-desc">Description coming soon.</p>
         </div>
 
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="feature-icon feature-icon-purple">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round">
@@ -105,7 +106,7 @@
   <div class="screen screen-downloads" id="download">
     <section class="downloads">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading reveal">
           <h2>
             Get it.
           </h2>
@@ -117,7 +118,7 @@
         <div class="platform-grid">
 
           <!-- LINUX -->
-          <div class="platform-card" data-platform="linux">
+          <div class="platform-card reveal" data-platform="linux">
             <div class="platform-header">
               <div class="platform-title">
                 <div class="platform-icon" id="svg-linux"></div>
@@ -189,7 +190,7 @@
           </div>
 
           <!-- WINDOWS -->
-          <div class="platform-card" data-platform="windows">
+          <div class="platform-card reveal" data-platform="windows">
             <div class="platform-header">
               <div class="platform-title">
                 <div class="platform-icon" id="svg-windows"></div>
@@ -219,7 +220,7 @@
           </div>
 
           <!-- ANDROID -->
-          <div class="platform-card" data-platform="android">
+          <div class="platform-card reveal" data-platform="android">
             <div class="platform-header">
               <div class="platform-title">
                 <div class="platform-icon" id="svg-android"></div>
@@ -261,7 +262,7 @@
           </div>
 
           <!-- WEB -->
-          <div class="platform-card" data-platform="web">
+          <div class="platform-card reveal" data-platform="web">
             <div class="platform-header">
               <div class="platform-title">
                 <div class="platform-icon" id="svg-web"></div>
@@ -295,18 +296,6 @@
   </div>
   </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <span>
-        © 2026 Croissant
-      </span>
-      <div class="footer-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Contact</a>
-      </div>
-    </div>
-  </footer>
   <script src="svgs.js"></script>
   <script>
     function detectPlatform() {
@@ -326,6 +315,20 @@
 
       const status = card.querySelector('.platform-status');
       if (status) status.textContent = 'Recommended for you';
+    }
+
+    function setupRevealAnimations() {
+      const revealEls = document.querySelectorAll('.reveal');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+          }
+        });
+      }, { threshold: 0.2 });
+
+      revealEls.forEach((el) => observer.observe(el));
     }
   </script>
 </body>
