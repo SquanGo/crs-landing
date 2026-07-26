@@ -443,6 +443,12 @@ nav {
 .download-arrow {
     color: var(--muted);
     font-size: 14px;
+    display: inline-flex;
+}
+
+.download-arrow svg {
+    width: 16px;
+    height: 16px;
 }
 
 .disabled {

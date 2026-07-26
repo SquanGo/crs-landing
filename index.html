@@ -137,7 +137,7 @@
                     Debian / Ubuntu
                   </span>
                 </div>
-                <span class="download-arrow">↓</span>
+                <span class="download-arrow" data-arrow="down"></span>
               </a>
 
               <a href="#" class="download-link">
@@ -149,7 +149,7 @@
                     Fedora / RHEL / openSUSE
                   </span>
                 </div>
-                <span class="download-arrow">↓</span>
+                <span class="download-arrow" data-arrow="down"></span>
               </a>
 
               <a href="#" class="download-link">
@@ -161,7 +161,7 @@
                     Portable Linux application
                   </span>
                 </div>
-                <span class="download-arrow">↓</span>
+                <span class="download-arrow" data-arrow="down"></span>
               </a>
             </div>
 
@@ -209,7 +209,7 @@
                     Windows 10 / 11 · 64-bit
                   </span>
                 </div>
-                <span class="download-arrow">↓</span>
+                <span class="download-arrow" data-arrow="down"></span>
               </a>
             </div>
           </div>
@@ -239,7 +239,7 @@
                     Install directly on Android
                   </span>
                 </div>
-                <span class="download-arrow">↓</span>
+                <span class="download-arrow" data-arrow="down"></span>
               </a>
 
               <div class="download-link disabled">
@@ -281,7 +281,7 @@
                     Available instantly in your browser
                   </span>
                 </div>
-                <span class="download-arrow">→</span>
+                <span class="download-arrow" data-arrow="right"></span>
               </a>
             </div>
           </div>
@@ -312,6 +312,7 @@
       document.getElementById('svg-windows').innerHTML = SVGS.windows;
       document.getElementById('svg-android').innerHTML = SVGS.android;
       document.getElementById('svg-web').innerHTML = SVGS.web;
+      injectDownloadArrows();
 
       highlightDetectedPlatform();
       setupRevealAnimations();
