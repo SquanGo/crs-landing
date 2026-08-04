@@ -5,10 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Croissant</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
+  <div class="tipbar" id="tipbar">
+    Coming soon, try the web version for now!
+  </div>
+
   <div class="screen screen-title">
     <header class="container">
       <nav>
@@ -38,13 +42,13 @@
             <a href="#download" class="button button-primary">
               Download Croissant
             </a>
-            <a href="https://example.com" class="button button-secondary">
+            <a href="../web" class="button button-secondary">
               Open in browser →
             </a>
           </div>
         </div>
         <div class="hero-visual reveal">
-          <img src="./img/demo.png" alt="Croissant app screenshot">
+          <img src="./demo.png" alt="Croissant app screenshot">
         </div>
       </section>
 
@@ -318,6 +322,7 @@
       highlightDetectedPlatform();
       setupRevealAnimations();
       setupContactModal();
+      setupTipbar();
     });
 
     function detectPlatform() {
@@ -374,6 +379,33 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
       });
+    }
+
+    function setupTipbar() {
+      const tipbar = document.getElementById('tipbar');
+      let timer = null;
+
+      function showTipbar() {
+        clearTimeout(timer);
+        tipbar.classList.add('visible');
+        timer = setTimeout(() => tipbar.classList.remove('visible'), 3000);
+      }
+
+      document.querySelectorAll('.download-link').forEach((link) => {
+        if (link.classList.contains('disabled')) return;
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          showTipbar();
+        });
+      });
+
+      const heroDownload = document.querySelector('.button-primary[href="#download"]');
+      if (heroDownload) {
+        heroDownload.addEventListener('click', (e) => {
+          e.preventDefault();
+          showTipbar();
+        });
+      }
     }
   </script>
 </body>

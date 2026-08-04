@@ -205,6 +205,7 @@ nav {
     width: 100%;
     border-radius: 16px;
     box-shadow: 0 30px 60px -20px rgba(23, 23, 23, 0.25);
+    margin-left: 8vw;
 }
 
 @media (max-width: 900px) {
@@ -621,4 +622,31 @@ nav {
 .modal-close:hover {
     background: var(--border);
     color: var(--text);
+}
+
+/* TIPBAR */
+
+.tipbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background: var(--text);
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -.1px;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), opacity .35s ease;
+    pointer-events: none;
+}
+
+.tipbar.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
 }
